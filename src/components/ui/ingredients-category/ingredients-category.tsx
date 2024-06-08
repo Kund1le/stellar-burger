@@ -1,5 +1,5 @@
-import styles from './ingredients-category.module.css';
 import { forwardRef } from 'react';
+import styles from './ingredients-category.module.css';
 import { TIngredientsCategoryUIProps } from './type';
 import { BurgerIngredient } from '@components';
 
