@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "order": {
+    "_id": "testID001",
+    "status": "done",
+    "name": "Космо Бургер",
+    "createdAt": "14.06.2024",
+    "updatedAt": "14.06.2024",
+    "number": 774711,
+    "ingredients": [
+        "SomeBun",
+        "SomeMain"
+    ]
+  },
+  "name": "Test"
+}

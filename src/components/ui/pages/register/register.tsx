@@ -1,11 +1,11 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Input,
   Button,
   PasswordInput
 } from '@zlden/react-developer-burger-ui-components';
 import styles from '../common.module.css';
-import { Link } from 'react-router-dom';
 import { RegisterUIProps } from './type';
 
 export const RegisterUI: FC<RegisterUIProps> = ({
@@ -37,6 +37,8 @@ export const RegisterUI: FC<RegisterUIProps> = ({
               error={false}
               errorText=''
               size='default'
+              onPointerEnterCapture={() => {}}
+              onPointerLeaveCapture={() => {}}
             />
           </div>
           <div className='pb-6'>
@@ -49,6 +51,8 @@ export const RegisterUI: FC<RegisterUIProps> = ({
               error={false}
               errorText=''
               size={'default'}
+              onPointerEnterCapture={() => {}}
+              onPointerLeaveCapture={() => {}}
             />
           </div>
           <div className='pb-6'>
