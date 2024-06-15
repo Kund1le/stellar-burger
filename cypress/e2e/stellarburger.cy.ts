@@ -54,12 +54,12 @@ describe('Проверка создания заказа', () => {
 
     setCookie(
       'accessToken',
-      'Bearer%20eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjM0OTdkOTdlZGUwMDAxZDA2ZjY1YSIsImlhdCI6MTcxODQ2OTY0OSwiZXhwIjoxNzE4NDcwODQ5fQ.doIX5IcyCoe_k4cOfKAirieVIj2i23Vl9DDNgWJGpBU'
+      'testAccessToken'
     );
 
     localStorage.setItem(
       'refreshToken',
-      '9e0149dfd79ac89198ee78459bfa9716bb2b34d51354e34ee6096cea4c08242e02df048c381a70aa'
+      'testRefreshToken'
     );
 
     cy.visit('http://localhost:4000/');
