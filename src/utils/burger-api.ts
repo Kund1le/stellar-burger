@@ -1,7 +1,7 @@
-import { setCookie, getCookie } from './cookie';
+import { setCookie, getCookie, deleteCookie } from './cookie';
 import { TIngredient, TOrder, TOrdersData, TUser } from './types';
 
-const URL = process.env.BURGER_API_URL;
+export const URL = process.env.BURGER_API_URL;
 
 const checkResponse = <T>(res: Response): Promise<T> =>
   res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
@@ -65,10 +65,6 @@ type TFeedsResponse = TServerResponse<{
   orders: TOrder[];
   total: number;
   totalToday: number;
-}>;
-
-type TOrdersResponse = TServerResponse<{
-  data: TOrder[];
 }>;
 
 export const getIngredientsApi = () =>
@@ -155,6 +151,13 @@ export const registerUserApi = (data: TRegisterData) =>
     .then((data) => {
       if (data?.success) return data;
       return Promise.reject(data);
+    })
+    .then((data) => {
+      setCookie('accessToken', data.accessToken);
+      setCookie('refreshToken', data.refreshToken);
+      localStorage.setItem('refreshToken', data.refreshToken);
+      localStorage.setItem('accessToken', data.accessToken);
+      return data;
     });
 
 export type TLoginData = {
@@ -174,6 +177,13 @@ export const loginUserApi = (data: TLoginData) =>
     .then((data) => {
       if (data?.success) return data;
       return Promise.reject(data);
+    })
+    .then((data) => {
+      setCookie('accessToken', data.accessToken);
+      setCookie('refreshToken', data.refreshToken);
+      localStorage.setItem('refreshToken', data.refreshToken);
+      localStorage.setItem('accessToken', data.accessToken);
+      return data;
     });
 
 export const forgotPasswordApi = (data: { email: string }) =>

@@ -1,4 +1,4 @@
-import React, { FC, memo } from 'react';
+import { FC, memo } from 'react';
 import styles from './burger-constructor-element.module.css';
 import { ConstructorElement } from '@zlden/react-developer-burger-ui-components';
 import { BurgerConstructorElementUIProps } from './type';
@@ -21,7 +21,10 @@ export const BurgerConstructorElementUI: FC<BurgerConstructorElementUIProps> =
           isUpDisabled={index === 0}
           isDownDisabled={index === totalItems - 1}
         />
-        <div className={`${styles.element_fullwidth} ml-2`}>
+        <div
+          className={`${styles.element_fullwidth} ml-2`}
+          data-testid={`ingredient ${ingredient._id}`}
+        >
           <ConstructorElement
             text={ingredient.name}
             price={ingredient.price}
