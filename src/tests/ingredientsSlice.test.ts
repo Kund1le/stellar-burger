@@ -47,7 +47,7 @@ describe('Проверка reducers ingredientsSlices', () => {
       price: 212
     }
   ];
-  
+
   test('Проверка статуса Ожидание', () => {
     const pending = {
       ...initialState,
@@ -57,7 +57,6 @@ describe('Проверка reducers ingredientsSlices', () => {
 
     const action = {
       type: ingredientsThunk.pending.type,
-      payload: ingredients
     };
 
     const newState = ingredientsReducer(initialState, action);
@@ -66,19 +65,17 @@ describe('Проверка reducers ingredientsSlices', () => {
   });
 
   test('Проверка статуса Отклонено', () => {
-    const testError = {
-      error: 'Ошибка'
-    };
+    const testError = 'Ошибка';
 
     const rejected = {
       ...initialState,
-      error: 'Ошибка',
+      error: testError,
       loading: false
     };
 
     const action = {
       type: ingredientsThunk.rejected.type,
-      error: testError
+      error: { message: testError }
     };
 
     const newState = ingredientsReducer(initialState, action);
@@ -87,7 +84,6 @@ describe('Проверка reducers ingredientsSlices', () => {
   });
 
   test('Проверка статуса Выполнено', () => {
-
     const fulfilled = {
       ...initialState,
       ingredients: ingredients,

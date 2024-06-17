@@ -86,17 +86,17 @@ describe('Проверка reducers burgerSlices', () => {
       constructor,
       addIngredients(newIngredient)
     );
-
+  
     const { items } = newState;
     const { ingredients } = items;
-
+  
     const expectedIngredients = [
-      ...ingredients.slice(1),
+      ...constructor.items.ingredients,
       { ...newIngredient, id: expect.any(String) }
     ];
-
+  
     expect(ingredients).toEqual(expectedIngredients);
-  });
+  });  
 
   test('Проверка удаления ингредиента', () => {
     const newState = constructorReducer(
@@ -105,9 +105,9 @@ describe('Проверка reducers burgerSlices', () => {
     );
 
     const { items } = newState;
-    const { ingredients } = items;
+    const { ingredients: updatedIngredients } = items;
 
-    expect(ingredients).toEqual([
+    expect(updatedIngredients).toEqual([
       ingredients[2]
     ]);
   });
@@ -119,13 +119,14 @@ describe('Проверка reducers burgerSlices', () => {
     );
 
     const { items } = newState;
-    const { ingredients } = items;
+    const { ingredients: updatedIngredients } = items;
 
-    expect(ingredients).toEqual([
+    expect(updatedIngredients).toEqual([
       ingredients[2],
       ingredients[1]
     ]);
   });
+
 
   test('Вторая проверка изменений в бургере', () => {
     const newState = constructorReducer(
@@ -134,9 +135,9 @@ describe('Проверка reducers burgerSlices', () => {
     );
 
     const { items } = newState;
-    const { ingredients } = items;
+    const { ingredients: updatedIngredients } = items;
 
-    expect(ingredients).toEqual([
+    expect(updatedIngredients).toEqual([
       ingredients[2],
       ingredients[1]
     ]);
